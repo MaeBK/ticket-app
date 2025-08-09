@@ -7,30 +7,40 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-            'Ticket App',
-                style: TextStyle(
-            color: Colors.deepPurple,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-                ),
+      appBar: appBar(),
+    );
+  }
+  AppBar appBar() {
+    return AppBar(
+      title: Text(
+        'Ticket App',
+        style: TextStyle(
+          color: Colors.deepPurple,
+          fontSize: 25,
+          fontWeight: FontWeight.bold,
         ),
-        centerTitle: true,
-        actions: [
-          Container(
-            margin: EdgeInsets.all(10),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: Color(0xffF7F8F8),
-              borderRadius: BorderRadius.circular(25)
-            ),
-            child: SvgPicture.asset(
-              'assets/icons/avatar default.svg'
-            ),
-          )
-        ],
       ),
+      centerTitle: true,
+
+      actions: [
+        GestureDetector(
+            onTap: () {},
+            child: Container(
+              margin: EdgeInsets.all(10),
+              alignment: Alignment.center,
+              width: 37,
+              decoration: BoxDecoration(
+                  color: Colors.grey.shade300,
+                  borderRadius: BorderRadius.circular(25)
+              ),
+              child: SvgPicture.asset(
+                'assets/icons/avatar default.svg',
+                height: 20,
+                width: 20,
+              ),
+            )
+        )
+      ],
     );
   }
 }
