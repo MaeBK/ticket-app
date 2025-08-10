@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ticket_app/pages/home.dart';
-import 'package:http/http.dart' as http;
 import 'package:ticket_app/users/logins/login_screen.dart';
 
 void main() {

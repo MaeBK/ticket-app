@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ticket_app/users/logins/account_creation_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -71,6 +71,8 @@ class _LoginScreenState extends State<LoginScreen>
                             padding: const EdgeInsets.fromLTRB(30, 30, 30, 8),
                             child: Column(
                               children: [
+
+                                //Already have an account
                                 Form(
                                   key: formKey,
                                   child: Column(
@@ -208,10 +210,26 @@ class _LoginScreenState extends State<LoginScreen>
                                             ),
                                           ),
                                         ),
-                                      )
+                                      ),
                                     ],
                                   ),
+                                ),
 
+                                //Create Account
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    TextButton(
+                                        onPressed: ()
+                                        {
+                                          Navigator.push(context,
+                                          MaterialPageRoute(builder: (context) => AccountCreationScreen())
+                                          );
+                                        },
+                                        child: const Text(
+                                          'Create Account'
+                                        ))
+                                  ],
                                 ),
                               ],
                             ),
