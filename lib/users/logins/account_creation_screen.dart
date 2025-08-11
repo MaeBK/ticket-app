@@ -1,6 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:ticket_app/api_connection/api_connection.dart';
 import 'package:ticket_app/users/logins/login_screen.dart';
+import 'package:http/http.dart';
+import 'package:ticket_app/users/model/user.dart';
 
 class AccountCreationScreen extends StatefulWidget {
   const AccountCreationScreen({super.key});
@@ -18,6 +25,58 @@ class _AccountCreationScreenState extends State<AccountCreationScreen>
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   var isObscure = true.obs;
+
+  validateUserEmail() async {
+    try{
+     var response =  await http.post(
+          Uri.parse(API.validateEmail),
+        body: {
+            'user_email': emailController.text.trim(),
+        }
+      );
+      if(response.statusCode == 200){
+        var responseBodyValidateEmail = jsonDecode(response.body);
+
+        if(responseBodyValidateEmail['emailFound']){
+          Fluttertoast.showToast(msg: "Email is already in use, try again.");
+        }else{
+          saveUserRecord();
+        }
+      }
+    }
+    catch(e){
+      print(e.toString());
+      Fluttertoast.showToast(msg: e.toString());
+    }
+  }
+
+  saveUserRecord() async {
+    User userModel = User(
+      1,
+      nameController.text.trim(),
+      emailController.text.trim(),
+      passwordController.text.trim()
+    );
+
+    try{
+      var response =  await http.post(
+        Uri.parse(API.createAccount),
+        body: userModel.toJson(),
+      );
+      if(response.statusCode == 200){
+        var responseBodyOfAccountCreated = jsonDecode(response.body);
+
+        if(responseBodyOfAccountCreated['success'] == true){
+          Fluttertoast.showToast(msg: "New Account Created.");
+        }else {
+          Fluttertoast.showToast(msg: "Account could not be created at this time.");
+        }
+      }
+    } catch(e){
+      print(e.toString());
+      Fluttertoast.showToast(msg: e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context)
@@ -243,6 +302,9 @@ class _AccountCreationScreenState extends State<AccountCreationScreen>
                                     borderRadius: BorderRadius.circular(25),
                                     child: InkWell(
                                       onTap: () {
+                                        if(formKey.currentState!.validate()){
+                                          validateUserEmail;
+                                        }
                                       },
                                       borderRadius: BorderRadius.circular(25),
                                       child: const Padding(
