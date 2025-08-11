@@ -75,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen>
                             Container(
                               alignment: Alignment.center,
                               child:
-                                Text('Welcome to Your Ticket Buyer',
+                                Text('Welcome Back to\nYour Ticket Buyer',
                                   style: TextStyle(
                                   color: Colors.deepPurple,
                                   fontSize: 25,
