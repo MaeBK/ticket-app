@@ -13,14 +13,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Ticket Buyer',
       theme: ThemeData(
           primarySwatch: Colors.deepPurple
       ),
       debugShowCheckedModeBanner: false,
       home: FutureBuilder(
         builder: (context, dataSnapShot){
-          return LoginScreen();
+          return HomePage();
         }, future: null,
       )
     );

@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:ticket_app/api_connection/api_connection.dart';
 import 'package:ticket_app/users/logins/login_screen.dart';
-import 'package:http/http.dart';
 import 'package:ticket_app/users/model/user.dart';
 
 class AccountCreationScreen extends StatefulWidget {
@@ -68,6 +67,12 @@ class _AccountCreationScreenState extends State<AccountCreationScreen>
 
         if(responseBodyOfAccountCreated['success'] == true){
           Fluttertoast.showToast(msg: "New Account Created.");
+
+          setState(() {
+            nameController.clear();
+            emailController.clear();
+            passwordController.clear();
+          });
         }else {
           Fluttertoast.showToast(msg: "Account could not be created at this time.");
         }
