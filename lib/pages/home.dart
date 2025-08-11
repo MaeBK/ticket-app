@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ticket_app/events/event_component.dart';
+import 'package:ticket_app/pages/event_tickets.dart';
 import 'package:ticket_app/users/logins/login_screen.dart';
 
 class HomePage extends StatelessWidget {
@@ -46,44 +48,66 @@ class HomePage extends StatelessWidget {
 
                 //event boxes
                 return Container(
-                  height: 200,
+                  height: 250,
                   decoration: BoxDecoration(
                     color: events[index].boxColor,
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        width: 100,
-                        height: 100,
-                        decoration: BoxDecoration(
 
+                      //Event Title
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5),
+                        child: Text(
+                          events[index].name,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
                         ),
                       ),
 
-                      //link to ticket buyer
-                      Material(
-                        color: Colors.deepPurple[300],
-                        borderRadius: BorderRadius.circular(25),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => HomePage())
-                            );
-                          },
+                      //Event Img
+                      Container(
+                        width: 200,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15)
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SvgPicture.asset(events[index].imgPath)
+                        ),
+                      ),
+
+                      //Event Tickets Button
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 15),
+                        child: Material(
+                          color: Colors.deepPurple[300],
                           borderRadius: BorderRadius.circular(25),
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(
-                              vertical: 10,
-                              horizontal: 28,
-                            ),
-                            child: Text(
-                              'Learn More / Buy Tickets',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) => EventScreen())
+                              );
+                            },
+                            borderRadius: BorderRadius.circular(25),
+                            child: const Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 10,
+                                horizontal: 28,
+                              ),
+                              child: Text(
+                                'Learn More / Buy Tickets',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
                               ),
                             ),
                           ),
