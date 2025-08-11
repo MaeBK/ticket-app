@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: FutureBuilder(
         builder: (context, dataSnapShot){
-          return LoginScreen();
+          return HomePage();
         }, future: null,
       )
     );

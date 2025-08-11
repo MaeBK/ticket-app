@@ -1,8 +1,17 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:ticket_app/pages/home.dart';
 import 'package:ticket_app/users/logins/account_creation_screen.dart';
+import 'package:http/http.dart' as http;
+import '../../api_connection/api_connection.dart';
+import '../model/user.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -15,6 +24,32 @@ class _LoginScreenState extends State<LoginScreen>
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   var isObscure = true.obs;
+
+  loginUser() async{
+    var response =  await http.post(
+        Uri.parse(API.login),
+        body: {
+          "user_email": emailController.text.trim(),
+          "user_password": passwordController.text.trim(),
+        }
+    );
+    if(response.statusCode == 200){
+      var responseBodyOfLogin = jsonDecode(response.body);
+
+      if(responseBodyOfLogin['success'] == true){
+        Fluttertoast.showToast(msg: "Account Signed In");
+
+        User userInfo = User.fromJson(responseBodyOfLogin["userData"]);
+
+        setState(() {
+          emailController.clear();
+          passwordController.clear();
+        });
+      }else {
+        Fluttertoast.showToast(msg: "Email or Password have been entered incorrectly.");
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context)
@@ -193,6 +228,9 @@ class _LoginScreenState extends State<LoginScreen>
                                         borderRadius: BorderRadius.circular(25),
                                         child: InkWell(
                                           onTap: () {
+                                            Navigator.push(context,
+                                                MaterialPageRoute(builder: (context) => HomePage())
+                                            );
                                           },
                                           borderRadius: BorderRadius.circular(25),
                                           child: const Padding(

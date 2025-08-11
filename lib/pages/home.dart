@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart' as http;
+import 'package:ticket_app/users/logins/login_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -24,22 +25,29 @@ class HomePage extends StatelessWidget {
       centerTitle: true,
 
       actions: [
-        GestureDetector(
-            onTap: () {},
-            child: Container(
-              margin: EdgeInsets.all(10),
-              alignment: Alignment.center,
-              width: 37,
-              decoration: BoxDecoration(
-                  color: Colors.grey.shade300,
-                  borderRadius: BorderRadius.circular(25)
-              ),
-              child: SvgPicture.asset(
-                'assets/icons/avatar default.svg',
-                height: 20,
-                width: 20,
-              ),
+        Builder(
+          builder: (context) {
+            return GestureDetector(
+                onTap: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LoginScreen())
+                  );
+                },
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  alignment: Alignment.center,
+                  width: 37,
+                  decoration: BoxDecoration(
+                      color: Colors.deepPurple[200],
+                      borderRadius: BorderRadius.circular(25)
+                  ),
+                  child: Icon(
+                      Icons.person_2_outlined,
+                      color: Colors.deepPurple
+                ),
             )
+            );
+          }
         )
       ],
     );
