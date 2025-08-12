@@ -107,10 +107,10 @@ class _AccountCreationScreenState extends State<AccountCreationScreen>
                     Container(
                       alignment: Alignment.center,
                       child:
-                      Text('Thank you for joining!',
+                      Text('Thank you for joining\n       Ticket Buyer!',
                         style: TextStyle(
                           color: Colors.deepPurple,
-                          fontSize: 25,
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

@@ -29,7 +29,7 @@ class EventComponent {
 
     events.add(
         EventComponent(
-            name: 'Baking competition',
+            name: 'Baking Competition',
             imgPath: 'assets/icons/baking.svg',
             boxColor: Color(0xFFB39DDB),
             description: 'Do you thing you have the chops to cook with some'

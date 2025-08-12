@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -77,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen>
                                 Text('Welcome Back to\nYour Ticket Buyer',
                                   style: TextStyle(
                                   color: Colors.deepPurple,
-                                  fontSize: 25,
+                                  fontSize: 35,
                                   fontWeight: FontWeight.bold,
                                 ),
                                 ),

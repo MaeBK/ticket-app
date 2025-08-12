@@ -34,18 +34,18 @@ class _EventScreenState extends State<EventScreen>
               minHeight: cons.maxHeight,
             ),
 
-            // Login Header
+            // Event Header
             child: SingleChildScrollView(
               child: Column(
                 children: [
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    height: 100,
+                    height: 75,
                     child:
                     Container(
                       alignment: Alignment.center,
                       child:
-                      Text('About This Event:',
+                      Text("FGC Tournament",
                         style: TextStyle(
                           color: Colors.deepPurple,
                           fontSize: 25,
@@ -54,6 +54,37 @@ class _EventScreenState extends State<EventScreen>
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.deepPurple[200],
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(60),
+                        ),
+                        boxShadow: const [
+                          BoxShadow(
+                            blurRadius: 10,
+                            color: Colors.black26,
+                            offset: Offset(0, -3),
+                          ),
+                        ],
+                      ),
+
+                      // Event Information
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(30, 30, 30, 8),
+                        child: Column(
+                          children: [
+                            Container(
+                              height:600,
+
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),

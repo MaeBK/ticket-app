@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ticket_app/events/event_component.dart';
-import 'package:ticket_app/pages/event_tickets.dart';
+import 'package:ticket_app/pages/events.dart';
 import 'package:ticket_app/users/logins/login_screen.dart';
 
 class HomePage extends StatelessWidget {
@@ -63,8 +63,9 @@ class HomePage extends StatelessWidget {
                         child: Text(
                           events[index].name,
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 18,
+                            fontWeight: FontWeight.bold
                           ),
                         ),
                       ),
