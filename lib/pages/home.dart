@@ -56,7 +56,6 @@ class HomePage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-
                       //Event Title
                       Padding(
                         padding: const EdgeInsets.only(top: 5),
@@ -93,7 +92,7 @@ class HomePage extends StatelessWidget {
                           child: InkWell(
                             onTap: () {
                               Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => EventScreen())
+                                  MaterialPageRoute(builder: (context) => EventPage())
                               );
                             },
                             borderRadius: BorderRadius.circular(25),
