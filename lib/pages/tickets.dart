@@ -34,7 +34,7 @@ class _TicketsPageState extends State<TicketsPage> {
                     height: 25,
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.only(top: 50, left:5, right:5, bottom:5),
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.deepPurple[200],
@@ -55,12 +55,109 @@ class _TicketsPageState extends State<TicketsPage> {
                         padding: const EdgeInsets.fromLTRB(30, 30, 30, 8),
                         child: Column(
                           children: [
+                            Text(
+                              "Purchase Your Tickets Now\n"
+                                  "For FGC Tournament",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.deepPurple,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+
                             SizedBox(
-                              height: 1200,
+                              height: 400,
                               child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [],
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 20),
+                                    child:
+
+                                    Material(
+                                      color: Colors.deepPurple[400],
+                                      borderRadius: BorderRadius.circular(25),
+                                      child: InkWell(
+                                        onTap: () {
+                                        },
+                                        borderRadius: BorderRadius.circular(25),
+                                        child: const Padding(
+                                          padding: EdgeInsets.symmetric(
+                                            vertical: 10,
+                                            horizontal: 28,
+                                          ),
+                                          child: Text(
+                                            'Purchase V.I.P Ticket',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 25,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 20),
+                                    child:
+
+                                    Material(
+                                      color: Colors.deepPurple[400],
+                                      borderRadius: BorderRadius.circular(25),
+                                      child: InkWell(
+                                        onTap: () {
+                                        },
+                                        borderRadius: BorderRadius.circular(25),
+                                        child: const Padding(
+                                          padding: EdgeInsets.symmetric(
+                                            vertical: 10,
+                                            horizontal: 28,
+                                          ),
+                                          child: Text(
+                                            'Purchase General Admissions Ticket',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 25,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 20),
+                                    child:
+
+                                    Material(
+                                      color: Colors.deepPurple[400],
+                                      borderRadius: BorderRadius.circular(25),
+                                      child: InkWell(
+                                        onTap: () {
+                                        },
+                                        borderRadius: BorderRadius.circular(25),
+                                        child: const Padding(
+                                          padding: EdgeInsets.symmetric(
+                                            vertical: 10,
+                                            horizontal: 28,
+                                          ),
+                                          child: Text(
+                                            'Purchase Streamer Admission Ticket',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 25,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],

@@ -178,8 +178,8 @@ class _EventPageState extends State<EventPage> {
                                       padding: const EdgeInsets.all(5.0),
                                       child: Text(
                                         "Streamer Admission Ticket:\n "
-                                        "Get here a day early and you can meet some"
-                                            "of your favorite gamer, creators, or casters!",
+                                        "Get here a day early and you can meet some "
+                                            "of your favorite gamers, creators, or casters!",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize: 20,
