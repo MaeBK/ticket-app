@@ -9,28 +9,21 @@ class TicketsPage extends StatefulWidget {
   State<TicketsPage> createState() => _TicketsPageState();
 }
 
-class _TicketsPageState extends State<TicketsPage>
-{
-
+class _TicketsPageState extends State<TicketsPage> {
   var formKey = GlobalKey<FormState>();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   var isObscure = true.obs;
 
-
   @override
-  Widget build(BuildContext context)
-  {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(),
       backgroundColor: Colors.deepPurple[100],
       body: LayoutBuilder(
-        builder: (context, cons)
-        {
-          return  ConstrainedBox(
-            constraints: BoxConstraints(
-              minHeight: cons.maxHeight,
-            ),
+        builder: (context, cons) {
+          return ConstrainedBox(
+            constraints: BoxConstraints(minHeight: cons.maxHeight),
 
             // Event Header
             child: SingleChildScrollView(
@@ -63,18 +56,18 @@ class _TicketsPageState extends State<TicketsPage>
                         child: Column(
                           children: [
                             SizedBox(
-                              height:1200,
+                              height: 1200,
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                ],
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [],
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -99,29 +92,27 @@ class _TicketsPageState extends State<TicketsPage>
 
       actions: [
         Builder(
-            builder: (context) {
-              return GestureDetector(
-                  onTap: (){
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LoginScreen())
-                    );
-                  },
-                  child: Container(
-                    margin: EdgeInsets.all(10),
-                    alignment: Alignment.center,
-                    width: 37,
-                    decoration: BoxDecoration(
-                        color: Colors.deepPurple[100],
-                        borderRadius: BorderRadius.circular(25)
-                    ),
-                    child: Icon(
-                        Icons.person_2_outlined,
-                        color: Colors.deepPurple
-                    ),
-                  )
-              );
-            }
-        )
+          builder: (context) {
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                );
+              },
+              child: Container(
+                margin: EdgeInsets.all(10),
+                alignment: Alignment.center,
+                width: 37,
+                decoration: BoxDecoration(
+                  color: Colors.deepPurple[100],
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: Icon(Icons.person_2_outlined, color: Colors.deepPurple),
+              ),
+            );
+          },
+        ),
       ],
     );
   }

@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
 
   List<EventComponent> events = [];
 
-  void _getEvents(){
+  void _getEvents() {
     events = EventComponent.getEvents();
   }
 
@@ -26,26 +26,24 @@ class HomePage extends StatelessWidget {
         children: [
           SizedBox(height: 25),
           Padding(
-            padding: const EdgeInsets.only(left:15),
-            child: Text('Events',
-            style: TextStyle(
-              color: Colors.deepPurple,
-              fontSize: 25,
-              fontWeight: FontWeight.bold
-            ),),
+            padding: const EdgeInsets.only(left: 15),
+            child: Text(
+              'Events',
+              style: TextStyle(
+                color: Colors.deepPurple,
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
           SizedBox(height: 15),
           SizedBox(
             height: 700,
             child: ListView.separated(
               itemCount: events.length,
-              padding: EdgeInsets.only(
-                left: 75,
-                right: 75,
-              ),
+              padding: EdgeInsets.only(left: 75, right: 75),
               separatorBuilder: (context, index) => SizedBox(height: 15),
-              itemBuilder: (context, index){
-
+              itemBuilder: (context, index) {
                 //event boxes
                 return Container(
                   height: 250,
@@ -64,7 +62,7 @@ class HomePage extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 18,
-                            fontWeight: FontWeight.bold
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
@@ -75,11 +73,11 @@ class HomePage extends StatelessWidget {
                         height: 150,
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(15)
+                          borderRadius: BorderRadius.circular(15),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: SvgPicture.asset(events[index].imgPath)
+                          child: SvgPicture.asset(events[index].imgPath),
                         ),
                       ),
 
@@ -91,8 +89,11 @@ class HomePage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(25),
                           child: InkWell(
                             onTap: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => EventPage())
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => EventPage(),
+                                ),
                               );
                             },
                             borderRadius: BorderRadius.circular(25),
@@ -113,16 +114,17 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                       ),
-                    ]
+                    ],
                   ),
                 );
               },
             ),
-          )
+          ),
         ],
       ),
     );
   }
+
   //navbar
   AppBar appBar() {
     return AppBar(
@@ -140,27 +142,25 @@ class HomePage extends StatelessWidget {
         Builder(
           builder: (context) {
             return GestureDetector(
-                onTap: (){
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginScreen())
-                  );
-                },
-                child: Container(
-                  margin: EdgeInsets.all(10),
-                  alignment: Alignment.center,
-                  width: 37,
-                  decoration: BoxDecoration(
-                      color: Colors.deepPurple[100],
-                      borderRadius: BorderRadius.circular(25)
-                  ),
-                  child: Icon(
-                      Icons.person_2_outlined,
-                      color: Colors.deepPurple
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                );
+              },
+              child: Container(
+                margin: EdgeInsets.all(10),
+                alignment: Alignment.center,
+                width: 37,
+                decoration: BoxDecoration(
+                  color: Colors.deepPurple[100],
+                  borderRadius: BorderRadius.circular(25),
                 ),
-            )
+                child: Icon(Icons.person_2_outlined, color: Colors.deepPurple),
+              ),
             );
-          }
-        )
+          },
+        ),
       ],
     );
   }

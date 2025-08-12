@@ -11,14 +11,11 @@ import 'package:ticket_app/users/model/user.dart';
 class AccountCreationScreen extends StatefulWidget {
   const AccountCreationScreen({super.key});
 
-
   @override
   State<AccountCreationScreen> createState() => _AccountCreationScreenState();
 }
 
-class _AccountCreationScreenState extends State<AccountCreationScreen>
-{
-
+class _AccountCreationScreenState extends State<AccountCreationScreen> {
   var formKey = GlobalKey<FormState>();
   var nameController = TextEditingController();
   var emailController = TextEditingController();
@@ -26,24 +23,21 @@ class _AccountCreationScreenState extends State<AccountCreationScreen>
   var isObscure = true.obs;
 
   validateUserEmail() async {
-    try{
-     var response =  await http.post(
-          Uri.parse(API.validateEmail),
-        body: {
-            'user_email': emailController.text.trim(),
-        }
+    try {
+      var response = await http.post(
+        Uri.parse(API.validateEmail),
+        body: {'user_email': emailController.text.trim()},
       );
-      if(response.statusCode == 200){
+      if (response.statusCode == 200) {
         var responseBodyValidateEmail = jsonDecode(response.body);
 
-        if(responseBodyValidateEmail['emailFound']){
+        if (responseBodyValidateEmail['emailFound']) {
           Fluttertoast.showToast(msg: "Email is already in use, try again.");
-        }else{
+        } else {
           saveUserRecord();
         }
       }
-    }
-    catch(e){
+    } catch (e) {
       print(e.toString());
       Fluttertoast.showToast(msg: e.toString());
     }
@@ -54,18 +48,18 @@ class _AccountCreationScreenState extends State<AccountCreationScreen>
       1,
       nameController.text.trim(),
       emailController.text.trim(),
-      passwordController.text.trim()
+      passwordController.text.trim(),
     );
 
-    try{
-      var response =  await http.post(
+    try {
+      var response = await http.post(
         Uri.parse(API.createAccount),
         body: userModel.toJson(),
       );
-      if(response.statusCode == 200){
+      if (response.statusCode == 200) {
         var responseBodyOfAccountCreated = jsonDecode(response.body);
 
-        if(responseBodyOfAccountCreated['success'] == true){
+        if (responseBodyOfAccountCreated['success'] == true) {
           Fluttertoast.showToast(msg: "New Account Created.");
 
           setState(() {
@@ -73,28 +67,26 @@ class _AccountCreationScreenState extends State<AccountCreationScreen>
             emailController.clear();
             passwordController.clear();
           });
-        }else {
-          Fluttertoast.showToast(msg: "Account could not be created at this time.");
+        } else {
+          Fluttertoast.showToast(
+            msg: "Account could not be created at this time.",
+          );
         }
       }
-    } catch(e){
+    } catch (e) {
       print(e.toString());
       Fluttertoast.showToast(msg: e.toString());
     }
   }
 
   @override
-  Widget build(BuildContext context)
-  {
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.deepPurple[100],
       body: LayoutBuilder(
-        builder: (context, cons)
-        {
-          return  ConstrainedBox(
-            constraints: BoxConstraints(
-              minHeight: cons.maxHeight,
-            ),
+        builder: (context, cons) {
+          return ConstrainedBox(
+            constraints: BoxConstraints(minHeight: cons.maxHeight),
 
             // Account Creation Header
             child: SingleChildScrollView(
@@ -103,11 +95,10 @@ class _AccountCreationScreenState extends State<AccountCreationScreen>
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: 285,
-                    child:
-                    Container(
+                    child: Container(
                       alignment: Alignment.center,
-                      child:
-                      Text('Thank you for joining\n       Ticket Buyer!',
+                      child: Text(
+                        'Thank you for joining\n       Ticket Buyer!',
                         style: TextStyle(
                           color: Colors.deepPurple,
                           fontSize: 30,
@@ -138,46 +129,45 @@ class _AccountCreationScreenState extends State<AccountCreationScreen>
                         padding: const EdgeInsets.fromLTRB(30, 30, 30, 8),
                         child: Column(
                           children: [
-
                             //Already have an account
                             Form(
                               key: formKey,
                               child: Column(
                                 children: [
-
                                   //Name
                                   TextFormField(
                                     controller: nameController,
-                                    validator: (val) => val == "" ? "No Name Entered" : null,
+                                    validator: (val) =>
+                                        val == "" ? "No Name Entered" : null,
                                     decoration: InputDecoration(
                                       prefixIcon: const Icon(
-                                          Icons.person_2_outlined,
-                                          color: Colors.deepPurple
+                                        Icons.person_2_outlined,
+                                        color: Colors.deepPurple,
                                       ),
                                       hintText: 'John Smith',
                                       border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(25),
-                                          borderSide: BorderSide(
-                                              color: Colors.white
-                                          )
+                                        borderRadius: BorderRadius.circular(25),
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                      enabledBorder:OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(25),
-                                          borderSide: BorderSide(
-                                              color: Colors.white
-                                          )
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(25),
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                        ),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(25),
-                                          borderSide: BorderSide(
-                                              color: Colors.white
-                                          )
+                                        borderRadius: BorderRadius.circular(25),
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                        ),
                                       ),
                                       disabledBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(25),
-                                          borderSide: BorderSide(
-                                              color: Colors.white
-                                          )
+                                        borderRadius: BorderRadius.circular(25),
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                        ),
                                       ),
                                       contentPadding: EdgeInsets.symmetric(
                                         horizontal: 14,
@@ -188,43 +178,42 @@ class _AccountCreationScreenState extends State<AccountCreationScreen>
                                     ),
                                   ),
 
-                                  const SizedBox(
-                                    height: 15,
-                                  ),
+                                  const SizedBox(height: 15),
 
                                   //Email
                                   TextFormField(
                                     controller: emailController,
-                                    validator: (val) => val == "" ? "No Email Entered" : null,
+                                    validator: (val) =>
+                                        val == "" ? "No Email Entered" : null,
                                     decoration: InputDecoration(
                                       prefixIcon: const Icon(
-                                          Icons.email_outlined,
-                                          color: Colors.deepPurple
+                                        Icons.email_outlined,
+                                        color: Colors.deepPurple,
                                       ),
                                       hintText: 'User@email.com',
                                       border: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(25),
-                                          borderSide: BorderSide(
-                                              color: Colors.white
-                                          )
+                                        borderRadius: BorderRadius.circular(25),
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                      enabledBorder:OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(25),
-                                          borderSide: BorderSide(
-                                              color: Colors.white
-                                          )
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(25),
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                        ),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(25),
-                                          borderSide: BorderSide(
-                                              color: Colors.white
-                                          )
+                                        borderRadius: BorderRadius.circular(25),
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                        ),
                                       ),
                                       disabledBorder: OutlineInputBorder(
-                                          borderRadius: BorderRadius.circular(25),
-                                          borderSide: BorderSide(
-                                              color: Colors.white
-                                          )
+                                        borderRadius: BorderRadius.circular(25),
+                                        borderSide: BorderSide(
+                                          color: Colors.white,
+                                        ),
                                       ),
                                       contentPadding: EdgeInsets.symmetric(
                                         horizontal: 14,
@@ -235,57 +224,68 @@ class _AccountCreationScreenState extends State<AccountCreationScreen>
                                     ),
                                   ),
 
-                                  const SizedBox(
-                                    height: 15,
-                                  ),
+                                  const SizedBox(height: 15),
 
                                   //Password
                                   Obx(
-                                        ()=> TextFormField(
+                                    () => TextFormField(
                                       controller: passwordController,
                                       obscureText: isObscure.value,
-                                      validator: (val) => val == "" ? "No Password Entered" : null,
+                                      validator: (val) => val == ""
+                                          ? "No Password Entered"
+                                          : null,
                                       decoration: InputDecoration(
                                         prefixIcon: const Icon(
-                                            Icons.vpn_key_outlined,
-                                            color: Colors.deepPurple
+                                          Icons.vpn_key_outlined,
+                                          color: Colors.deepPurple,
                                         ),
                                         suffixIcon: Obx(
-                                              ()=> GestureDetector(
-                                            onTap: ()
-                                            {
-                                              isObscure.value = !isObscure.value;
+                                          () => GestureDetector(
+                                            onTap: () {
+                                              isObscure.value =
+                                                  !isObscure.value;
                                             },
                                             child: Icon(
-                                              isObscure.value ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                                              isObscure.value
+                                                  ? Icons
+                                                        .visibility_off_outlined
+                                                  : Icons.visibility_outlined,
                                               color: Colors.deepPurple,
                                             ),
                                           ),
                                         ),
                                         hintText: 'Password',
                                         border: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(25),
-                                            borderSide: BorderSide(
-                                                color: Colors.white
-                                            )
+                                          borderRadius: BorderRadius.circular(
+                                            25,
+                                          ),
+                                          borderSide: BorderSide(
+                                            color: Colors.white,
+                                          ),
                                         ),
-                                        enabledBorder:OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(25),
-                                            borderSide: BorderSide(
-                                                color: Colors.white
-                                            )
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            25,
+                                          ),
+                                          borderSide: BorderSide(
+                                            color: Colors.white,
+                                          ),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(25),
-                                            borderSide: BorderSide(
-                                                color: Colors.white
-                                            )
+                                          borderRadius: BorderRadius.circular(
+                                            25,
+                                          ),
+                                          borderSide: BorderSide(
+                                            color: Colors.white,
+                                          ),
                                         ),
                                         disabledBorder: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(25),
-                                            borderSide: BorderSide(
-                                                color: Colors.white
-                                            )
+                                          borderRadius: BorderRadius.circular(
+                                            25,
+                                          ),
+                                          borderSide: BorderSide(
+                                            color: Colors.white,
+                                          ),
                                         ),
                                         contentPadding: EdgeInsets.symmetric(
                                           horizontal: 14,
@@ -297,9 +297,7 @@ class _AccountCreationScreenState extends State<AccountCreationScreen>
                                     ),
                                   ),
 
-                                  const SizedBox(
-                                    height: 15,
-                                  ),
+                                  const SizedBox(height: 15),
 
                                   //Login Button
                                   Material(
@@ -307,7 +305,7 @@ class _AccountCreationScreenState extends State<AccountCreationScreen>
                                     borderRadius: BorderRadius.circular(25),
                                     child: InkWell(
                                       onTap: () {
-                                        if(formKey.currentState!.validate()){
+                                        if (formKey.currentState!.validate()) {
                                           validateUserEmail;
                                         }
                                       },
@@ -328,7 +326,6 @@ class _AccountCreationScreenState extends State<AccountCreationScreen>
                                       ),
                                     ),
                                   ),
-
                                 ],
                               ),
                             ),
@@ -337,15 +334,16 @@ class _AccountCreationScreenState extends State<AccountCreationScreen>
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 TextButton(
-                                    onPressed: ()
-                                    {
-                                      Navigator.push(context,
-                                          MaterialPageRoute(builder: (context) => LoginScreen())
-                                      );
-                                    },
-                                    child: const Text(
-                                        'Already Have An Account'
-                                    ))
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => LoginScreen(),
+                                      ),
+                                    );
+                                  },
+                                  child: const Text('Already Have An Account'),
+                                ),
                               ],
                             ),
                           ],

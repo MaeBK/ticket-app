@@ -8,20 +8,19 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp ({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-          primarySwatch: Colors.deepPurple
-      ),
+      theme: ThemeData(primarySwatch: Colors.deepPurple),
       debugShowCheckedModeBanner: false,
       home: FutureBuilder(
-        builder: (context, dataSnapShot){
+        builder: (context, dataSnapShot) {
           return HomePage();
-        }, future: null,
-      )
+        },
+        future: null,
+      ),
     );
   }
 }

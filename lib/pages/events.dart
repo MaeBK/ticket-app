@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ticket_app/pages/tickets.dart';
@@ -79,14 +81,17 @@ class _EventPageState extends State<EventPage> {
                                     ),
                                   ),
 
-                                  // Event Location/Times
                                   Container(
                                     width: 400,
-                                    height: 170,
+                                    height: 2,
                                     decoration: BoxDecoration(
-                                      color: Colors.deepPurple[200],
-                                      borderRadius: BorderRadius.circular(15),
+                                        color: Colors.deepPurple[300],
                                     ),
+                                  ),
+
+                                  // Event Location/Times
+                                  SizedBox(
+                                    height: 170,
                                     child: Padding(
                                       padding: const EdgeInsets.all(5.0),
                                       child: Text(
@@ -94,11 +99,19 @@ class _EventPageState extends State<EventPage> {
                                         "When:\nJune.24th - June.26th ",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          color: Colors.white,
+                                          color: Colors.black,
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
+                                    ),
+                                  ),
+
+                                  Container(
+                                    width: 400,
+                                    height: 2,
+                                    decoration: BoxDecoration(
+                                        color: Colors.deepPurple[300],
                                     ),
                                   ),
 
@@ -120,28 +133,41 @@ class _EventPageState extends State<EventPage> {
                                     ),
                                   ),
 
-                                  //General Admission Ticket Info
                                   Container(
                                     width: 400,
-                                    height: 170,
+                                    height: 2,
                                     decoration: BoxDecoration(
-                                      color: Colors.deepPurple[200],
-                                      borderRadius: BorderRadius.circular(15),
+                                        color: Colors.deepPurple[300],
+                                        borderRadius: BorderRadius.circular(15)
                                     ),
+                                  ),
+
+                                  //General Admission Ticket Info
+                                  SizedBox(
+                                    height: 125,
                                     child: Padding(
                                       padding: const EdgeInsets.all(5.0),
                                       child: Text(
-                                        "General Admission Ticket:\n\n "
+                                        "General Admission Ticket:\n"
                                         "Grab your badge and make your way to the"
                                             "tables or stage! Don't forget to check "
                                             "out artist ally!",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          color: Colors.white,
+                                          color: Colors.black,
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
+                                    ),
+                                  ),
+
+                                  Container(
+                                    width: 400,
+                                    height: 2,
+                                    decoration: BoxDecoration(
+                                        color: Colors.deepPurple[300],
+                                        borderRadius: BorderRadius.circular(15)
                                     ),
                                   ),
 
